@@ -5,7 +5,7 @@
 //Iniciamos la sesión
 
 		
-$con = mysqli_connect('mysql.hostinger.es','u888001602_admin','1234567890','u888001602_intra');
+$con = mysqli_connect('localhost','root','','bd_intranet');
 $sql = "SELECT users.*,resources.*,resourcestype.*,registers.*,estadoinfo.* FROM ((((resourcestype INNER JOIN resources ON resourcestype.idRType=resources.idRType) INNER JOIN registers ON resources.idResource=registers.idResource) INNER JOIN users ON users.idUser=registers.idUser) INNER JOIN estadoinfo ON resources.idEstado=estadoinfo.idEstado)";
 
 if(!empty($_SESSION['usuario'])){		//Aqui introducimos lo que puede ver un usuario con una cuentra normal
@@ -38,11 +38,16 @@ if(!empty($_SESSION['usuario'])){		//Aqui introducimos lo que puede ver un usuar
 		    echo "</tr>";
 		}
 	echo "</table>";
-
+	echo "<br>"
+	?>
+	<form method="get" action="gestusers.php">
+    <button type="submit">Gestión de usuarios</button>
+	</form>
+	
+		<?php
 }else{
 	echo "no eres miembro";
-}
-	
+}	
 ?>
 <!-- Esto podran verlo usuarios y administradores -->
 <br/>

@@ -24,7 +24,7 @@
 					if (!isset($_REQUEST['tiporecursos'])){
 						//EN EL CASO DE QUE NO EXISTA, EJECUTA EL SIGUIENTE CODIGO.
 						//Conexion a la BBDD.
-						$conn=mysqli_connect('mysql.hostinger.es','u888001602_admin','1234567890','u888001602_intra');
+						$conn=mysqli_connect('localhost','root','','bd_intranet');
 						//Almacenar la consulta SQL en una variable.
 		                $consulta_Rtype="SELECT idRType, tipo FROM resourcestype";
 		                //Almacenar resultado de consulta en un Array.
@@ -74,7 +74,7 @@
 			    <?php
 		            } else {
 		            	//EN EL CASO DE QUE SI EXISTA EJECUTA EL SIGUIENTE CODIGO.
-		            	$conn=mysqli_connect('mysql.hostinger.es','u888001602_admin','1234567890','u888001602_intra');
+		            	$conn=mysqli_connect('localhost','root','','bd_intranet');
 		            	$consulta_Rtype="SELECT idRType, tipo FROM resourcestype";
 						$datos=mysqli_query($conn,$consulta_Rtype);
 		        ?></div>
@@ -138,7 +138,7 @@
         		</tr>
 		        	<?php
 		        		if ((!isset($_REQUEST['tiporecursos'])) OR ($_REQUEST['tiporecursos']==12)){
-			        		$conn=mysqli_connect('mysql.hostinger.es','u888001602_admin','1234567890','u888001602_intra');
+			        		$conn=mysqli_connect('localhost','root','','bd_intranet');
 					        if ((!isset($_REQUEST['estado'])) OR ($_REQUEST['estado']==4)){
 					        	$sql="SELECT resources.*, resourcestype.*, estadoinfo.* FROM ((resourcestype INNER JOIN resources ON resourcestype.idRType=resources.idRType) INNER JOIN estadoinfo ON resources.idEstado=estadoinfo.idEstado)";
 					        	//echo $sql;
@@ -175,7 +175,7 @@
 							}
 						} else {
 							//echo $_REQUEST['tiporecursos'];
-							$conn=mysqli_connect('mysql.hostinger.es','u888001602_admin','1234567890','u888001602_intra');
+							$conn=mysqli_connect('localhost','root','','bd_intranet');
 							$sql="SELECT resources.*, resourcestype.*, estadoinfo.* FROM ((resourcestype INNER JOIN resources ON resourcestype.idRType=resources.idRType) INNER JOIN estadoinfo ON resources.idEstado=estadoinfo.idEstado)";
 					        $sql.=" WHERE";
 					        $sql.=" resources.idRType=$_REQUEST[tiporecursos]";
