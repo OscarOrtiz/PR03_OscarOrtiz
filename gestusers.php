@@ -1,7 +1,12 @@
+<link rel="stylesheet" href="css/tablareservas.css">
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		<style>
+	    	a {color: blue;}
+	    </style>
 <?php
 	session_start();
 	$con = mysqli_connect('localhost', 'root', '', 'bd_intranet');
-	$sql = "SELECT * FROM users ORDER BY idUser ASC";
+	$sql = "SELECT * FROM users ORDER BY estado DESC";
 
 ?>
 <!DOCTYPE HTML>
@@ -53,23 +58,48 @@ if(!empty($_SESSION['usuario'])){		//Aqui introducimos lo que puede ver un usuar
 				<?php
 					$datos = mysqli_query($con, $sql);
 				?>
-					<table border>
+					<table class="mytable">
 						<tr>
 							<th>Nombre</th>
 							<th>Mail</th>
+							<th>Teléfono</th>
+							<th>Privilegios</th>
+							<th>Estado</th>
 							<th>Opciones</th>
 						</tr>
 				<?php
 				while ($prod = mysqli_fetch_array($datos)){
 				echo "<tr>";
 					echo "<td>$prod[nomUser]</td>";
-					echo "<td>"."$prod[mail]"."</td><td>";
-				echo "</tr>";	
+					echo "<td>"."$prod[mail]"."</td>";
+					echo "<td>"."$prod[telf]"."</td>";
+					echo "<td>"."$prod[privilegios]"."</td>";
+					
+					if ($prod['estado']==1) {
+						echo "<td>Habilitado</td>";
+					}else{
+						echo "<td>Deshabilitado</td>";
+					}
+					if ($prod['estado']==1) {
+					echo "<td>";
+					echo "<a href='modificar.php?id=$prod[idUser]'><img src='images/iconos/Pencil_2.png'></a>";
+					echo "&nbsp";
+					echo "&nbsp";
+					echo "&nbsp";
+					echo "<a href='eliminar.proc.php?id=$prod[idUser]'><img src='images/iconos/Trash.png'></a>";
+				}
+				echo "</td></tr>";
 				}
 				?>		
+				</table>
+				<br/><a href='insertar.php'><img src='images/iconos/add.png'></a><br/>
 			</center>
 		</div>
-		<div class="footer"></div>
+<br/>
+		<div class="footer">
+		</div>
+
 	</body>
-	<footer></footer>
+
+
 </HTML>

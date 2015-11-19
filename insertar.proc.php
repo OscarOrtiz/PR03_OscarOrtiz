@@ -7,15 +7,15 @@
 	<body>
 		<?php
 			//realizamos la conexión con mysql
-			$con = mysqli_connect('localhost', 'root', '', 'BD_exemple');
-			$sql = "INSERT INTO producto (pro_nom, pro_descripcio, pro_preu, tip_id) VALUES ('$_REQUEST[nom]', '$_REQUEST[des]', $_REQUEST[pre], $_REQUEST[tip])";
+			$con = mysqli_connect('localhost', 'root', '', 'bd_intranet');
+			$sql = "INSERT INTO users (nomUser,password, mail, telf, privilegios) VALUES ('$_REQUEST[nomUser]','$_REQUEST[password]','$_REQUEST[mail]', '$_REQUEST[telf]','$_REQUEST[privilegios]')";
 
 			//echo $sql;
 
 			//lanzamos la sentencia sql
 			$datos = mysqli_query($con, $sql);
 
-			header("location: index.php")
+			header("location: gestusers.php")
 		?>
 	</body>
 </html>

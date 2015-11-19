@@ -1,5 +1,5 @@
 <?php
-
+//if ($prod['estado']==1) {
 /****************************************
 $con = mysqli_connect($host, $usuari, $clau, $bd); 
 /*caturamos nuestros datos que fueron enviados desde el formulario mediante el metodo POST
@@ -54,4 +54,10 @@ mysqli_free_result($result);
 **necesario hacerlo para no sobrecargar al servidor, bueno en el caso de
 **programar una aplicación que tendrá muchas visitas ;) .*/
 mysqli_close($con);
+//}else{
+//	echo '<script language="javascript">
+//		alert("Usuario Deshabilitado");
+//		document.location=("index.html");
+//		</script>';
+//}
 ?>

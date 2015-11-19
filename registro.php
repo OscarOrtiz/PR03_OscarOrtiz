@@ -18,11 +18,19 @@
       //lanzamos la sentencia sql
       $datos = mysqli_query($con, $sql);
       ?>
-    <form action="registrar-usuario.php" method="GET">
+    <form action="registro_user.php" method="GET">
       Nombre:<br/>
       <input type="text" name="nomUser" size="20" maxlength="25"><br/>
-      Password:<br/>
+      Contraseña:<br/>
       <input type="password" name="password"><br/>
+      Mail:<br/>
+      <input type="text" name="mail"><br/>
+      Teléfono:<br/>
+      <input type="text" name="telf" maxlength="9"><br/>
+      <select name="privilegios">
+        <option value="admin">Admin</option>
+        <option value="member">Member</option>
+        </select><br/><br/>
       </select><br/><br/>
       <input type="submit" value="Registrar">
     </form>
