@@ -1,5 +1,12 @@
 <?php
-//if ($prod['estado']==1) {
+
+//$con = mysqli_connect('localhost', 'root', '', 'bd_intranet');
+//$sql = "SELECT * FROM users WHERE idUser=$_REQUEST[id]";
+//$datos = mysqli_query($con, $sql);
+
+//if(mysqli_num_rows($datos)==1){
+//				$prod=mysqli_fetch_array($datos);
+//				if($prod[estado]==1){
 /****************************************
 $con = mysqli_connect($host, $usuari, $clau, $bd); 
 /*caturamos nuestros datos que fueron enviados desde el formulario mediante el metodo POST

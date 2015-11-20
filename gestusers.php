@@ -86,8 +86,29 @@ if(!empty($_SESSION['usuario'])){		//Aqui introducimos lo que puede ver un usuar
 					echo "&nbsp";
 					echo "&nbsp";
 					echo "&nbsp";
-					echo "<a href='eliminar.proc.php?id=$prod[idUser]'><img src='images/iconos/Trash.png'></a>";
-				}
+					//echo "<a href='eliminar.php?id=$prod[idUser]'><img src='images/iconos/Trash.png'></a>";
+					echo "&nbsp";
+					echo "&nbsp";
+					echo "&nbsp";
+					echo "<a href='deshabilitar.php?id=$prod[idUser]'><img src='images/iconos/Error_Symbol.png'></a>";
+					echo "&nbsp";
+					echo "&nbsp";
+					echo "&nbsp";
+					}else{
+						echo "<td>";
+					echo "&nbsp";
+					echo "&nbsp";
+					echo "&nbsp";
+					echo "&nbsp";
+					echo "&nbsp";
+					echo "&nbsp";
+					echo "&nbsp";
+					echo "&nbsp";
+					echo "&nbsp";
+					echo "&nbsp";
+					echo "&nbsp";
+						echo "<a href='activar.php?id=$prod[idUser]'><img src='images/iconos/Checkmark.png'></a>";
+					}
 				echo "</td></tr>";
 				}
 				?>		

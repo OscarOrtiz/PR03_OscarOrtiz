@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-11-2015 a las 12:58:17
+-- Tiempo de generación: 20-11-2015 a las 10:52:34
 -- Versión del servidor: 5.6.26
 -- Versión de PHP: 5.6.12
 
@@ -44,6 +44,17 @@ INSERT INTO `estadoinfo` (`idEstado`, `nomEstado`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `estadouser`
+--
+
+CREATE TABLE IF NOT EXISTS `estadouser` (
+  `iduserestado` int(11) DEFAULT NULL,
+  `estado` varchar(15) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `registers`
 --
 
@@ -53,14 +64,25 @@ CREATE TABLE IF NOT EXISTS `registers` (
   `data_fin` datetime DEFAULT NULL,
   `idResource` int(11) NOT NULL,
   `idUser` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Volcado de datos para la tabla `registers`
 --
 
 INSERT INTO `registers` (`idRegister`, `data_ini`, `data_fin`, `idResource`, `idUser`) VALUES
-(22, '2015-11-06 11:25:19', '2015-11-06 11:25:22', 15, 1);
+(1, '2015-11-04 08:37:32', '2015-11-06 12:22:30', 6, 1),
+(7, '2015-11-06 12:20:01', '2015-11-06 12:21:13', 15, 3),
+(8, '2015-11-06 12:20:53', '2015-11-06 12:21:21', 1, 3),
+(9, '2015-11-06 12:23:30', '2015-11-06 12:23:52', 15, 3),
+(10, '2015-11-06 12:24:04', NULL, 12, 3),
+(11, '2015-11-06 12:24:10', '2015-11-17 08:19:31', 15, 3),
+(12, '2015-11-06 12:25:08', NULL, 11, 3),
+(13, '2015-11-16 10:49:19', NULL, 16, 2),
+(14, '2015-11-16 12:23:01', NULL, 1, 2),
+(15, '2015-11-16 12:23:13', NULL, 3, 2),
+(16, '2015-11-17 08:28:17', NULL, 15, 5),
+(17, '2015-11-18 09:40:04', NULL, 8, 10);
 
 -- --------------------------------------------------------
 
@@ -80,22 +102,22 @@ CREATE TABLE IF NOT EXISTS `resources` (
 --
 
 INSERT INTO `resources` (`idResource`, `nomR`, `idEstado`, `idRType`) VALUES
-(1, 'Aula de teoria 1', 1, 4),
+(1, 'Aula de teoria 1', 2, 4),
 (2, 'Aula de teoria 2', 1, 4),
-(3, 'Aula de teoria 3', 1, 4),
+(3, 'Aula de teoria 3', 2, 4),
 (4, 'Aula de teoria 4', 1, 4),
 (5, 'Aula de informatica 1', 1, 11),
 (6, 'Aula de informatica 2', 1, 11),
 (7, 'Despacho entrevistas 1', 1, 5),
-(8, 'Despacho entrevistas 2', 1, 5),
+(8, 'Despacho entrevistas 2', 2, 5),
 (9, 'Sala de reuniones 1', 1, 8),
 (10, 'Proyector 1', 1, 9),
-(11, 'Carro portatiles 1', 1, 1),
-(12, 'Portatil 1', 1, 10),
+(11, 'Carro portatiles 1', 2, 1),
+(12, 'Portatil 1', 2, 10),
 (13, 'Portatil 2', 1, 10),
 (14, 'Portatil 3', 1, 10),
-(15, 'Movil 1', 1, 2),
-(16, 'Movil 2', 1, 2),
+(15, 'Movil 1', 2, 2),
+(16, 'Movil 2', 2, 2),
 (18, 'Todos los recursos', 1, 12);
 
 -- --------------------------------------------------------
@@ -136,19 +158,28 @@ CREATE TABLE IF NOT EXISTS `users` (
   `mail` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `telf` int(9) NOT NULL,
   `password` varchar(20) COLLATE utf8_bin NOT NULL,
-  `privilegios` varchar(25) COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+  `privilegios` varchar(25) COLLATE utf8_bin NOT NULL,
+  `estado` int(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`idUser`, `nomUser`, `mail`, `telf`, `password`, `privilegios`) VALUES
-(1, 'Carlos Sanchez', 'carlos@intranet.es', 666554422, 'carsan', 'admin'),
-(2, 'Oscar Ortiz', 'oscar@intranet.es', 999887733, 'oscort', 'admin'),
-(3, 'Jose Luis Maseda', 'joseluis@intranet.es', 777332211, 'josmas', 'admin'),
-(4, 'Enric Gorriz', 'enric@intranet.es', 888775544, 'enrgor', 'member'),
-(5, 'Alejandro Moreno', 'alejandro@intranet.es', 444553366, 'alemor', 'member');
+INSERT INTO `users` (`idUser`, `nomUser`, `mail`, `telf`, `password`, `privilegios`, `estado`) VALUES
+(1, 'Carlos Pepe', 'carlos@gmail.com', 666554422, 'carsan', 'member', 1),
+(2, 'Oscar Ortiz Fernandez', 'oscar@intranet.es', 999887733, 'oscort', 'admin', 1),
+(3, 'Jose Luis Maseda', 'joseluis@intranet.es', 777332211, 'josmas', 'admin', 1),
+(5, 'Alejandro Moreno', 'alejandro@intranet.es', 444553366, 'alemor', 'member', 1),
+(10, 'Raul Perez', 'raulperez@intranet.es', 555555555, 'rauper', 'member', 1),
+(13, 'Oriol Villorbina', 'oriolvillorbina@intranet.es', 618196080, 'orivil', 'member', 1),
+(15, 'MartÃ­ Salvador', 'martisalvador@intranet.es', 164181541, 'marsal', 'member', 0),
+(16, 'AdriÃ  Amela', 'adriamela@intranet.es', 658621658, 'adrame', 'member', 1),
+(18, 'Andrea Dalmau', 'andreadalmau@intranet.es', 618661611, 'anddal', 'member', 1),
+(19, 'Ingrid Chomara', 'ingridchomara@intranet.es', 615186516, 'infcho', 'member', 1),
+(20, 'Marta BurgalÃ©s', 'martaburgales@intranet.es', 618668161, 'marbur', 'member', 1),
+(21, 'Yannick Amigo', 'yannickamigo@intranet.es', 618818181, 'yanami', 'member', 1),
+(22, 'Jorge Jaico', 'jorgejaico@intranet.es', 618891618, 'jorjai', 'member', 0);
 
 --
 -- Índices para tablas volcadas
@@ -206,7 +237,7 @@ ALTER TABLE `estadoinfo`
 -- AUTO_INCREMENT de la tabla `registers`
 --
 ALTER TABLE `registers`
-  MODIFY `idRegister` int(255) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
+  MODIFY `idRegister` int(255) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT de la tabla `resources`
 --
@@ -221,7 +252,7 @@ ALTER TABLE `resourcestype`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `idUser` int(255) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `idUser` int(255) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=23;
 --
 -- Restricciones para tablas volcadas
 --

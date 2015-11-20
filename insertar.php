@@ -21,7 +21,7 @@
 			$datos = mysqli_query($con, $sql);
 			?>
 			 <div id="login">
-		<center><form action="insertar.proc.php" method="GET">
+		<center><form action="insertar.users.php" method="GET">
 
 			<fieldset class="clearfix">
 

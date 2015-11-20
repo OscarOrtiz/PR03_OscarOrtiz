@@ -25,7 +25,7 @@
 				?>
 
 			<div id="login">
-				<center><form name="formulario1" action="modificar.proc.php" method="get">
+				<center><form name="formulario1" action="modificar.users.php" method="get">
 				<fieldset class="clearfix">
 
 				<input type="hidden" name="idUser" value="<?php echo $prod['idUser']; ?>">
